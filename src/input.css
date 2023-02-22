@@ -4,13 +4,13 @@
 
 @font-face {
     font-family: "Museo Sans 300";
-    src: url('../fonts/MuseoSansCyrl_0.woff');
+    src: url('./fonts/MuseoSansCyrl_0.woff');
 }
 
 
 @font-face {
     font-family: "Museo500";
-    src: url('../fonts/MuseoSansCyrl_1.woff');
+    src: url('./fonts/MuseoSansCyrl_1.woff');
 }
 
 @layer base {

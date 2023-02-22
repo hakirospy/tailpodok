@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./src/**/*.{html,js}", "./*.html"],
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
     theme: {
   
     lineHeight: {
@@ -16,3 +16,6 @@ module.exports = {
     },
     plugins: [],
   }
+
+
+
