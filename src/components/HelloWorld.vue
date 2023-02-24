@@ -2,33 +2,912 @@
 
     <h1>{{ msg }}</h1>
 
-    <router-link to="/about">About</router-link>
+    <header class="grid justify-around gap-8 mt-8">
+        <section class="grid grid-cols-[230px_570px_minmax(60px,500px)_150px] gap-[46px]">
+            <div class="logo not-italic font-normal text-[28px] leading-6 grid items-center">podokonniki.top</div>
+            <div class="topMenu flex gap-[15px]">
+
+              
+                <a v-for="(menuItem, idx) in menuTop"
+                :key="idx" class="rounded no-underline px-[25px] py-[7px]   bg-[#F0F0F0] hover:cursor-pointer" href="#"><span
+                        class="not-italic font-light text-base leading-6 text-[black] ho">{{ menuItem }}</span></a>
+
+
+                
+            </div>
+            <div class="search grid justify-items-end"><button
+                    class="searchButton bg-[#F0F0F0] w-[-webkit-max-content] w-[-moz-max-content] w-max px-[25px] py-2.5 border-[none]"><img
+                        class="w-5 h-5" src="../assets/img/search.svg"></button></div>
+            <div class="phoneBlock not-italic font-light text-lg leading-6 grid items-center">8 (812) 240-11-26</div>
+        </section>
+        <div class="headerBottom grid grid-cols-[5fr_1fr] items-center">
+            <div class="menuSmallTop flex gap-5">
+
+                <a href="" v-for="(menuSItem, idx) in menuStatic"
+                :key="idx" class="no-underline"><span class="font-light text-sm leading-18px  text-black no-underline hover:cursor-pointer">
+                  {{ menuSItem }}</span></a>
+                
+            </div>
+
+            <div class="authBlock flex gap-[30px] justify-end">
+                <div class="faivourite relative"><img src="../assets/img/faivourite.svg" alt=""><span
+                        class="border font-light text-[11px] absolute p-0.5 rounded-[3px] border-solid border-[#D2D0CE] -right-1 -top-1.5">0</span>
+                </div>
+                <div class="smallBasket relative"><img src="../assets/img/backet.svg" alt=""><span
+                        class="border font-light text-[11px] absolute p-0.5 rounded-[3px] border-solid border-[#D2D0CE] -right-1 -top-1.5">0</span>
+                </div>
+                <div class="userAuth"><img src="../assets/img/userAuth.svg" alt=""></div>
+
+            </div>
+        </div>
+    </header>
+
+    <section class="mainSlider grid content-center flex-wrap justify-around mt-7 pt-20 pb-[133px] bg-[#E6E4E3] ">
+
+        <div class="conteinerSlider flex gap-x-6">
+
+            <div v-for="(value, key, idx) in mainBanner"
+            :key="idx" 
+            :style="{ backgroundImage: `url(${require('@/assets/img/' + key)})` }"
+            class="itemSlider   h-[290px] w-[242px] transition-all duration-[0.2s] ease-linear relative rounded-[10px] hover:shadow-[0_5px_10px_4px_rgba(0,0,0,0.2)] hover:cursor-pointer"
+                >
+                <div
+                    class="contentSlide  shadow-[0px_0px_6px_rgba(0,0,0,0.1)] bottom-[-3px] absolute w-[202px] h-[66px] text-center m-5 rounded-[10px] bg-white">
+                    <a href="" class="no-underline"><span
+                            class="not-italic font-light text-[13px] leading-[18px] text-center text-black flex h-[66px] flex-col justify-around px-5 py-0">{{ value }}</span></a></div>
+            </div>
+            
+
+
+
+
+        </div>
+    </section>
+
+    <section class="razdelTabs grid justify-around bg-[#E6E4E3]">
+        <div class="contentTab max-w-[1572px] grid gap-x-6 grid-cols-[repeat(4,375px)] items-end"> 
+
+            <div
+                class="tab flex  group cursor-pointer bg-[#F0F0F0] justify-between h-[130px] items-center transition-all duration-[0.2s] ease-linear px-10 py-0 rounded-[10px_10px_0px_0px] hover:bg-white">
+                <div class="brandImg"><a href=""> <img src="../assets/img/Logo_crystallit.png" alt=""></a></div>
+                <div class="count"><span
+                        class="group-hover:bg-[#F0F0F0] text-lg bg-white  leading-6 w-[60px] h-[60px] grid items-center justify-around rounded-[30px]">12</span>
+                </div>
+            </div>
+            <div
+                class="tab group h-[140px] active bg-[#FFFFFF] flex cursor-pointer justify-between  items-center transition-all duration-[0.2s] ease-linear px-10 py-0 rounded-[10px_10px_0px_0px] hover:bg-white">
+                <div class="brandImg"><a href=""> <img src="../assets/img/Logo_estera.png" alt=""></a></div>
+                <div class="count"><span
+                        class=" group-hover:bg-[#F0F0F0] text-lg bg-[#F0F0F0]  leading-6 w-[60px] h-[60px] grid items-center justify-around rounded-[30px]">14</span>
+                </div>
+            </div>
+            <div
+                class="tab  group h-[140px] flex cursor-pointer bg-[#F0F0F0] justify-between  items-center transition-all duration-[0.2s] ease-linear px-10 py-0 rounded-[10px_10px_0px_0px] hover:bg-white">
+                <div class="brandImg"><a href=""> <img src="../assets/img/Logo_danke.png" alt=""></a></div>
+                <div class="count"><span
+                        class=" group-hover:bg-[#F0F0F0] bg-white text-lg leading-6 w-[60px] h-[60px] grid items-center justify-around rounded-[30px]">45</span>
+                </div>
+            </div>
+            <div
+                class="tab flex group  cursor-pointer justify-between bg-[#F0F0F0] h-[130px] items-center transition-all duration-[0.2s] ease-linear px-10 py-0 rounded-[10px_10px_0px_0px] hover:bg-white">
+                <div class="brandImg"><a href=""> <img src="../assets/img/Logo_moller.png" alt=""></a></div>
+                <div class="count"><span
+                        class="group-hover:bg-[#F0F0F0] text-lg bg-white  leading-6 w-[60px] h-[60px] grid items-center justify-around rounded-[30px]">32</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="main_content grid justify-around bg-[white]">
+        <div class="name_item_block grid grid-cols-[minmax(500px,774px)_minmax(500px,774px)] items-center mt-10">
+
+            <div class="name_tovar text-3xl leading-[44px] text-left">Подоконник Estera Дуб золотой матовый</div>
+            <div
+                class="price_title_block shadow-[0px_0px_20px_rgba(0,0,0,0.1)] grid grid-cols-[1fr_minmax(200px,294px)] items-center rounded-[10px]">
+
+                <div class="price text-2xl leading-[30px] pl-[30px] pr-0 py-5">
+                    <span class="value text-2xl leading-[30px]">1 050 руб.</span> <span class="pogonash text-sm leading-18px">/ пог. м</span>
+                    <span class='quetion bg-[url("./assets/img/quetion.svg")] inline-block w-5 h-5 ml-2.5'></span>
+                </div>
+                <div
+                    class="button_to_cart text-base leading-6 h-[46px] grid items-center justify-around mr-[30px] rounded-md bg-[#E4CEBA]">
+                    Перейти в карточку товара</div>
+
+
+            </div>
+
+        </div>
+        <div class="foto_calc_block grid grid-cols-[1fr_1fr_1fr] gap-x-[23px] mt-[30px]">
+
+            <div class="foto_calc rounded-[10px] bg-[#F9F8F7]"><img src="../assets/img/foto_podokonika1.png" alt=""></div>
+            <div class="foto_calc rounded-[10px] bg-[#F9F8F7]"><img src="../assets/img/foto_podokonika2.png" alt=""></div>
+            <div class="foto_calc rounded-[10px] bg-[#F9F8F7]"><img src="../assets/img/foto_podokonika3.png" alt=""></div>
+
+        </div>
+        <div class="calc_block grid grid-cols-[minmax(500px,775px)_minmax(500px,775px)] gap-x-5 mt-[30px]">
+
+            <div class="inputs_block">
+                <div class="name_color mb-4">
+                    <span class="name text-base leading-6 text-black">Цвет:</span>
+                    <span class="value text-sm  leading-18px text-[#707070] ml-[5px]">Дуб золотой</span>
+
+                </div>
+
+
+
+
+                <div class="color_block flex gap-x-0.5 flex-wrap ml-[-5px]">
+                    <!-- span*10>img[src='../assets/img/small_color$.png']-->
+                    <span
+                        class="group w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="https://lepnina.top/upload/uf/2a2/2a282cfbd39aa5e70e8c5f579ed1383f.jpg" alt="">
+                        <p class="group-hover:block bg-[#F5F3F1] hidden absolute text-xs leading-[14px] text-center text-black bottom-[-30px] w-[max-content] z-[1] px-[3px] py-[5px] rounded-lg">Orex Prostoy</p>
+                    </span>
+                    <span class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color2.png" alt="">
+                        <p class="hidden absolute text-xs leading-[14px] text-center text-black bottom-[-42px] w-[100] z-[1] px-[3px] py-[5px] rounded-lg">Orex Prostoy</p>
+                    </span>
+                    <span class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color3.png" alt="">
+                        <p class="hidden absolute text-xs leading-[14px] text-center text-black bottom-[-42px] w-[100] z-[1] px-[3px] py-[5px] rounded-lg">Orex Prostoy</p>
+                    </span>
+                    <span class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color4.png" alt="">
+                        <p class="hidden absolute text-xs leading-[14px] text-center text-black bottom-[-42px] w-[100] z-[1] px-[3px] py-[5px] rounded-lg">Orex Prostoy</p>
+                    </span>
+                    <span class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color5.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color6.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color7.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color8.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color9.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color10.png" alt=""></span> 
+                    <span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color1.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color2.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color3.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color4.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color5.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color6.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color7.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color8.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color9.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color10.png" alt=""></span>
+                    <span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color1.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color2.png" alt=""></span><span  
+                        class="hidden absolute text-xs leading-[14px] text-center text-black bottom-[-42px] w-[100] z-[1] px-[3px] py-[5px] rounded-lg"
+                        ><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color3.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color4.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color5.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color6.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color7.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color8.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color9.png" alt=""></span><span
+                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
+                            src="../assets/img/small_color10.png" alt=""></span>
+
+                </div>
+
+
+
+                
+
+
+
+
+                <div class="surface flex gap-[15px] items-center mt-2.5">
+
+                    <div class="title text-base leading-6 text-[black]">Покрытие:</div>
+                    <div
+                        class="button text-base leading-6 text-[black] rounded px-[15px] py-[7px] border-2 border-solid border-[#D2D0CE] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]">
+                        Матовый</div>
+                    <div
+                        class="button text-base leading-6 text-[black] rounded px-[15px] py-[7px] border-2 border-solid border-[#D2D0CE] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]">
+                        Глянцевый</div>
+                    <div
+                        class="button text-base leading-6 text-[black] rounded px-[15px] py-[7px] border-2 border-solid border-[#D2D0CE] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]">
+                        Сатин</div>
+
+
+                </div>
+                <div class="sizes text-base leading-6 text-[black] mt-5 mb-[15px] font-Museo500">Выберите размер:</div>
+                <div class="sizes_block grid grid-cols-[minmax(150px,216px)_minmax(150px,216px)_1fr] gap-x-[15px]">
+
+                    <div><span class="text-sm leading-[18px] text-[#707070]">Ширина:</span>
+                        <select
+                            class="border rounded text-sm leading-[18px] text-[black] w-full mt-[5px] px-[15px] py-[9px] border-solid border-[#D2D0CE]"
+                            name="shurina" id="">
+                            <option value="1">100</option>
+                            <option value="2">200</option>
+                            <option value="3">300</option>
+                            <option value="4">400</option>
+                            <option value="5">500</option>
+                            <option value="6">600</option>
+
+
+                        </select>
+
+                    </div>
+
+                    <div
+                        class="quest_block relative after:content-[''] after:bg-[url(./assets/img/quetion.svg)] after:inline-block after:w-5 after:h-5 after:absolute after:ml-2.5 after:right-[15px] after:bottom-[9px]">
+                        <span>Длина:</span>
+                        <input type="text"
+                            class="border rounded text-sm leading-18px text-[black] w-full mt-[5px] px-[15px] py-[9px] border-solid border-[#D2D0CE]"
+                            name="long" value="100 см" id="">
+                    </div>
+                    <div><span>Кол-во</span>
+                        <div class="count_price_block flex items-center mt-[5px]">
+                            <div
+                                class="count_block border rounded w-[110px] text-center px-[15px] py-[9px] border-solid border-[#D2D0CE]">
+                                <span>-</span>
+                                <input type="text" class="text-center w-[72%] border-[none]" name="count" maxlength="3"
+                                    value="1" id=""><span>+</span>
+                            </div>
+
+                            <div class="price_tovara text-2xl leading-[30px] ml-[15px] font-Museo500">2 100 <span
+                                    class="text-sm leading-[18px]">руб.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="sizes text-base leading-6 text-[black] mt-5 mb-[15px]">Добавьте сопутствующие товары:</div>
+                <div class="dop_tovar_button flex gap-x-[15px]">
+
+                    <div 
+                        class="hover:bg-black rounded text-[white] text-base leading-6 items-center flex pl-[25px] pr-[38px] py-[7px] hover:cursor-pointer">
+                        Заглушки <span class='bg-[url("./assets/img/plus.svg")] w-[19px] h-5 inline-block ml-[15px]'></span>
+                    </div>
+                    <div
+                        class="hover:bg-black rounded text-[white] text-base leading-6 items-center flex pl-[25px] pr-[38px] py-[7px] hover:cursor-pointer">
+                        Откосы <span class='bg-[url("./assets/img/plus.svg")] w-[19px] h-5 inline-block ml-[15px]'></span>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="ready_block">
+
+
+                <div class="shadow-[0px_0px_20px_rgba(0,0,0,0.1)] mb-[5px] px-[30px] py-5 rounded-[10px]">
+
+                    <div class="content flex justify-between items-center">
+                        <div class="tovar_calc">
+
+                            <div class="title text-sm leading-18px">Подоконник Estera Дуб золотой матовый</div>
+                            <div class="prop text-sm leading-[18px] text-[#707070] mt-[5px]">(Ш 20 см х Д 100 см, 1 шт)</div>
+                        </div>
+
+                        <div class="price text-base leading-[18px]">2 100 руб. <span class='close_calc bg-[url("./assets/img/close\_calc.svg")] w-3 h-[13px] inline-block ml-2.5 hover:bg-[url("./assets/img/close\_calc\_hover.svg")] hover:h-3 hover:cursor-pointer'></span></div>
+                    </div>
+                </div>
+
+                <div class="shadow-[0px_0px_20px_rgba(0,0,0,0.1)] mb-[5px] px-[30px] py-5 rounded-[10px]">
+                    <div class="content flex justify-between items-center">
+                        <div class="tovar_calc">
+
+                            <div class="title text-sm leading-18px">Подоконник Estera Дуб золотой матовый</div>
+                            <div class="prop text-sm leading-[18px] text-[#707070] mt-[5px]">(Ш 20 см х Д 100 см, 1 шт)</div>
+                        </div>
+
+                        <div class="price text-base leading-[18px]">2 100 руб. <span class='close_calc bg-[url("./assets/img/close\_calc.svg")] w-3 h-[13px] inline-block ml-2.5 hover:bg-[url("./assets/img/close\_calc\_hover.svg")] hover:h-3 hover:cursor-pointer'></span></div>
+                    </div>
+
+                    <div class="line_block my-2.5 border-[0.5px] border-solid border-[#D2D0CE]"></div>
+
+                    <div class="content flex justify-between items-center">
+                        <div class="tovar_calc">
+
+                            <div class="title text-sm leading-18px">Подоконник Estera Дуб золотой матовый</div>
+                            <div class="prop text-sm leading-[18px] text-[#707070] mt-[5px]">(Ш 20 см х Д 100 см, 1 шт)</div>
+                        </div>
+
+                        <div class="price text-base leading-[18px]">2 100 руб. <span class='close_calc bg-[url("./assets/img/close\_calc.svg")] w-3 h-[13px] inline-block ml-2.5 hover:bg-[url("./assets/img/close\_calc\_hover.svg")] hover:h-3 hover:cursor-pointer'></span></div>
+                    </div>
+
+                    <div class="edit_button grid justify-around text-sm leading-[18px] underline cursor-pointer text-[#CAA381] mt-2.5">Редактировать</div>
+                </div>
+                <div>
+
+                    <div class="title_all_price flex justify-between">
+
+                        <span class="title text-base leading-6 text-[black]">Общая стоимость:</span>
+                        <span class="all_price text-2xl leading-[30px]">2 300 руб. </span>
+
+                    </div>
+
+                    <div class="all_price_button flex justify-between gap-x-[15px] mt-[15px]">
+                        <div class="past_plus hover:bg-black flex items-center justify-center  bg-[#404040] w-full text-[white] text-center cursor-pointer px-5 py-[13px] rounded-md"> <span class="add_plus bg-[url(./assets/img/plus.svg)] inline-block w-[19px] h-5 mr-2.5"></span> Добавить еще подоконник</div>
+                        <div class="bround  text-white w-full bg-[#E4CEBA] hover:bg-[#d9b696] text-center cursor-pointer px-5 py-[13px] rounded-md">Оформить заказ</div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="line  border mt-[65px] mb-[60px] border-solid border-[#CBCBCB]"></div>
+
+
+        <section class="benefits grid grid-cols-[minmax(480px,508px)_minmax(900px,1040px)] gap-x-6">
+
+            <div class="block_benefits">
+                <div class="title text-[40px] leading-[58px] text-[black] mb-10">Преимущества наших
+                    подоконников</div>
+
+                <div class="item_benefits grid grid-cols-[repeat(2,minmax(200px,242px))] gap-x-6 gap-y-5">
+
+                    <div class="px-5 py-[25px] rounded-md">
+                        <span class="title not-italic text-lg leading-6 flex items-center"> <span class="icon w-[22px] h-[22px] inline-block mr-3" :style="{ backgroundImage: `url(${require('@/assets/img/ben1.svg' )})` }" ></span>
+                            Долговечность</span>
+
+                        <span class="text font-light text-base leading-6 inline-block pt-2">Не тускнеют со временем, неприхотливы в эксплуатации. </span>
+
+                    </div>
+
+                    <div class="px-5 py-[25px] rounded-md">
+                        <span class="title not-italic text-lg leading-6 flex items-center"><span class="icon w-[22px] h-[21px] inline-block mr-3"
+                          :style="{ backgroundImage: `url(${require('@/assets/img/ben2.svg' )})` }"
+                              ></span> Прочность</span>
+
+                        <span class="text font-light text-base leading-6 inline-block pt-2">Подоконники с внутренними ребрами жесткости. </span>
+
+                    </div>
+
+                    <div class="px-5 py-[25px] rounded-md">
+                        <span class="title not-italic text-lg leading-6 flex items-center"> <span class="icon w-[22px] h-[22px] inline-block mr-3" 
+                          :style="{ backgroundImage: `url(${require('@/assets/img/ben3.svg' )})` }"
+                          ></span>
+                            Поверхность</span>
+
+                        <span class="text font-light text-base leading-6 inline-block pt-2">Устойчив к горячему, к возникновению пятен от пищевых продуктов. </span>
+
+                    </div>
+
+                    <div class="px-5 py-[25px] rounded-md">
+                        <span class="title not-italic text-lg leading-6 flex items-center"><span class="icon w-[22px] h-[22px] inline-block mr-3" 
+                         
+                          :style="{ backgroundImage: `url(${require('@/assets/img/ben4.svg' )})` }"
+                          ></span>
+                            Цветовая
+                            палитра</span>
+
+                        <span class="text font-light text-base leading-6 inline-block pt-2">Большой выбор расцветок подходящих вашему интерьеру.</span>
+
+                    </div>
+
+
+                    <div class="px-5 py-[25px] rounded-md">
+                        <span class="title not-italic text-lg leading-6 flex items-center"><span class="icon w-[22px] h-[22px] inline-block mr-3" 
+                          :style="{ backgroundImage: `url(${require('@/assets/img/ben5.svg' )})` }"
+                         ></span>
+                            Комплектующие</span>
+
+                        <span class="text font-light text-base leading-6 inline-block pt-2">Сочетаются по цвету
+                            с подоконниками и окнами. </span>
+
+                    </div>
+
+
+                    <div class="px-5 py-[25px] rounded-md"> 
+                        <span class="title not-italic text-lg leading-6 flex items-center">А подробнее в таблице сравнения</span>
+
+                        <div class="block_ben_button flex items-center relative"><span class="button rounded text-base leading-6 text-white inline-block mt-3 px-[25px] py-2">Посмотреть </span> <span class="smile_icon w-[74px] h-[76px] inline-block bg-[100%_100%] bg-no-repeat absolute -right-5 top-px"
+                          :style="{ backgroundImage: `url(${require('@/assets/img/ben_img.svg' )})` }"
+                                ></span></div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="block_foto flex items-center justify-around rounded-[10px]">
+
+                <img src="../assets/img/part_window.png" alt="" srcset="">
+
+            </div>
+
+
+
+        </section>
+
+    </section>
+    <section class="telefone_block h-[358px] grid justify-around mt-20">
+        <div class="content grid grid-cols-[minmax(700px,1040px)_minmax(200px,400px)] gap-x-[100px] px-0 py-20">
+            <div class="input_block">
+                <div class="title">Заказать обратный звонок</div>
+                <div class="block">
+                    <input type="text" name="name" placeholder="Имя" id="">
+                    <input type="text" name="telehone" placeholder="+7 (___) ___ __ __">
+                    <input type="button" value="Перезвоните мне">
+                </div>
+
+                <div class="check_block w-[375px] flex gap-x-2.5 mt-5">
+                    <label>
+                        <input type="checkbox" checked name="agreement" id="">
+                        <span class="check"></span>
+                    </label>
+                    <span> Отправляя заявку, я соглашаюсь с условиями <a href="#">Политики конфиденциальности</a></span>
+                </div>
+            </div>
+            <div class="notific"><span>Вы можете сэкономить время, позвонив нам прямо сейчас:</span>
+
+
+                <div class="tel">+ 7 (812) 500-09-45</div>
+                <div class="time_work">пн-вс 11:00-20:00</div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <section class="main_content choose_podok">
+
+        <div class="title_name">Как выбрать размер подоконника?</div>
+
+        <div class="block_slider_main">
+
+            <div class="slider">
+
+                <div class="item_slider">
+
+                    <div class="title">При подборе подоконника важно правильно определить его размеры</div>
+                    <div class="image"><img src="../assets/img/foto_slider1.png"></div>
+                    <div class="detail_text">При слишком широком подоконнике окно не будет получать достаточно теплого
+                        воздуха,
+                        что приведет к его запотеванию. Учет этих условий вызывает необходимость ограничить размер
+                        выступа 7 см, при
+                        этом край подоконника не может перекрывать радиатор более чем наполовину.</div>
+                </div>
+
+                <div class="navigation_slider">
+
+                    <div class="num_page"><span class="big_num">02</span>/03</div>
+                    <div class="navigation_button">
+                        <div class="left"></div>
+                        <div class="right"></div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="text_block_main">
+
+                <div class="title_button">
+                    <div class="text">Не забудьте купить</div>
+                    <div class="button">Все аксессуары</div>
+                </div>
+
+
+                <div class="text_block">
+                    <div class="grid_block">
+                        <span class="title">Торцевые заглушки</span>
+                        <span class="text">Закрывают торец профиля, придавая изделию монолитность, герметизируя
+                            внутренние полости
+                            профиля.</span>
+                    </div>
+                    <div class="image_block">
+
+                        <img src="../assets/img/Photo_sill_plug.png" alt="">
+                        <img src="../assets/img/Photo_sill_plug2.png" alt="">
+
+                    </div>
+                </div>
+
+                <div class="text_block">
+                    <div class="grid_block">
+                        <span class="title">Соединители</span>
+                        <span class="text">Применяют при сборке сложных изогнутых конструкций для маскировки
+                            стыковочного шва.</span>
+                    </div>
+                    <div class="image_block">
+                        <img src="../assets/img/Photo_sill_plug3.png" alt="">
+                        <img src="../assets/img/Photo_sill_plug4.png" alt="">
+                    </div>
+
+                </div>
+
+
+            </div>
+            </div>
+    </section>
+    <section class="main_blog">
+        <div class="alcohol_block">
+
+            <div class="title">Блог</div>
+            <div class="slider_cart_blog">
+
+                <div class="item">
+
+                    <div class="content">
+                        <div class="image"><img src="../assets/img/foto_blog1.png" alt=""></div>
+                        <div class="title_cart">Путешествие в прошлое: история появления подоконников</div>
+                        <div class="text_descr">Интересные факты про подоконники</div>
+                        <div class="button">интересные факты</div>
+                    </div>
+                </div>
+
+
+                <div class="item">
+
+                    <div class="content">
+                        <div class="image"><img src="../assets/img/foto_blog2.png" alt=""></div>
+                        <div class="title_cart">Путешествие в прошлое: история появления подоконников</div>
+                        <div class="text_descr">Интересные факты про подоконники</div>
+                        <div class="button">интересные факты</div>
+                    </div>
+                </div>
+
+
+                <div class="item">
+                    <div class="content">
+
+                        <div class="image"><img src="../assets/img/foto_blog3.png" alt=""></div>
+                        <div class="title_cart">Путешествие в прошлое: история появления подоконников</div>
+                        <div class="text_descr">Интересные факты про подоконники</div>
+                        <div class="button">интересные факты</div>
+                    </div>
+                </div>
+
+
+                <div class="item">
+
+                    <div class="content">
+                        <div class="image"><img src="../assets/img/foto_blog4.png" alt=""></div>
+                        <div class="title_cart">Путешествие в прошлое: история появления подоконников</div>
+                        <div class="text_descr">Интересные факты про подоконники</div>
+                        <div class="button">интересные факты</div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="to_zero"></div>
+        <div class="soc_block">
+            <div>Подписывайтесь и следите за нами в социальных сетях</div>
+            <div><span class="vk"></span> Группа вконтакте</div>
+            <div><span class="youtube"></span> Наш канал на Ютюб</div>
+        </div>
+
+        <div class="sertic_block">
+
+            <div class="message">
+                <div class="content_title">
+                    <span class="title">Мы online</span>
+                    <span class="button">Написать в WhatsApp</span>
+                    <span class="text">Остались вопросы по заказу, напишите нам</span>
+                </div>
+
+                <div class="message_block">
+
+                    <span class="one_message">Добрый день, у меня есть размеры окна, как мне заказать подоконник?</span>
+                    <span class="two_message">
+                        <span class="icon"></span>
+                        <span class="text_message">Добрый день) в течении
+                            10 минут мы подберем подоконник и перезвоним вам.</span>
+                    </span>
+
+                </div>
+
+
+            </div>
+            <div class="sert"><span class="title">Сертификаты</span>
+                <span class="text">Продажа подоконников сопровождена всей необходимой документацией.</span>
+                <div class="block_sert">
+                    <span class="sert1"></span>
+                    <span class="sert2"></span>
+                    <span class="plus_button"></span>
+                </div>
+            </div>
+            <div class="video_block">
+
+                <div class="image">
+                    <span class="play"></span>
+                </div>
+
+                <div class="content">
+
+                    <span class="title">Видео-инструкция</span>
+                    <span class="text">3х минутный ролик: Замена <br> подоконника без замены окна</span>
+                    <span class="button">видеогалерея</span>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="map_block">
+
+            <span class="title">Мы недалеко!</span>
+            <span class="text">Предлагаем посетить наш шоу-рум, лично оценить качество подоконников, широкий
+                ассортимент, можно выбрать фактуру или цвет на любой вкус. Мы поможем вам рассчитать размеры, оформим
+                доставку в кратчайшие сроки.</span>
+
+
+            <div class="map_content">
+                <div class="block">
+
+                    <span class="address">г. Санкт-Петербург, Дальневосточный пр. 14, МЦ Мебельвуд, 1-й этаж, секция
+                        101</span>
+                    <span class="telephone_map">+ 7 (812) 500-09-45</span>
+
+                    <span class="email_map">info@lepnina.top</span>
+                    <span class="work_time">Сегодня <span class="green_dot"></span> 11:00-20:00 <span
+                            class="strelka"></span></span>
+                    <div class="video_contact">
+
+                        <span class="prev_text">Как до нас добраться?</span>
+
+                        <div class="image_contact">
+
+                            <span class="play"></span>
+                        </div>
+                        <div class="button_send_otzuv">Оставить первый отзыв</div>
+                        <div class="button_send_tell"><span class="tell"></span> Заказать звонок</div>
+
+
+                    </div>
+                </div>
+
+                <iframe
+                    src="https://yandex.com/map-widget/v1/?um=constructor%3A3ccf7b817addce3422a0422f9fd4c220c056e525b94bc89ff7b6dd64a65ac63d&amp;source=constructor"
+                    width="100%" height="775" frameborder="0"></iframe>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+
+        <div class="content">
+
+            <div class="opisanie_block">
+
+                <span class="name_site">podokonniki.top</span>
+                <span class="address_site">г. Санкт-Петербург, Дальневосточный пр. 14, ТЦ «Мебельвуд», 1 этаж, секция
+                    101
+                    График работы: ПН- ВС 11:00 – 20:00</span>
+
+                <div class="soc_block">
+                    <span class="youtube"></span>
+                    <span class="vk"></span>
+                    <span class="politika">Политики конфиденциальности</span>
+                </div>
+            </div>
+
+            <div class="razdels">
+                <div class="menu_one">
+                    <span class="title">Разделы</span>
+
+
+                    <span><a href="">О компании</a></span>
+                    <span><a href="">Статьи и советы</a></span>
+                    <span><a href="">Видеогалерея</a></span>
+                    <span><a href="">Документы</a></span>
+                </div>
+
+                <div class="menu_two">
+
+                    <span><a href="" class="mt-5 pt-3">Сотрудничество</a></span>
+                    <span><a href="" class="mt-5 pt-3">Оплата</a></span>
+                    <span><a href="" class="mt-5 pt-3">Доставка</a></span>
+                    <span><a href="" class="mt-5 pt-3">Реквизиты</a></span>
+                    <span><a href="">Контакты</a></span>
+                </div>
+
+            </div>
+            <div class="links_block">
+
+                <div>
+                    <a href="">Каталог</a>
+                    <a href="">Crystallit</a>
+                    <a href="">Danke</a>
+
+                </div>
+                <div>
+                    <a href="">Estera</a>
+                    <a href="">Moller</a>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="detail_txt">sill.store, 2012-2022. Все ресурсы сайта www.sill.store являются объектами авторского
+            права и прав на интеллектуальную собственность, защищены российским законодательством об охране авторских
+            прав и интеллектуальной собственности. Подробнее</div>
+    </footer>
+
+
+
+    <!-- Modal toggle -->
+    <div class="flex justify-center m-5">
+        <button id="updateProductButton" data-modal-toggle="updateProductModal"
+            class="block text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            type="button">
+            Update product
+        </button>
+    </div>
+
+    <!-- Main modal -->
+    <div id="updateProductModal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
+        <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+            <!-- Modal content -->
+            <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+                <!-- Modal header -->
+                <div
+                    class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                        Update Product
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-toggle="updateProductModal">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <form action="#">
+                    <div class="grid gap-4 mb-4 sm:grid-cols-2">
+                        <div>
+                            <label for="name"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                            <input type="text" name="name" id="name" value="iPad Air Gen 5th Wi-Fi"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Ex. Apple iMac 27&ldquo;">
+                        </div>
+                        <div>
+                            <label for="brand"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
+                            <input type="text" name="brand" id="brand" value="Google"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Ex. Apple">
+                        </div>
+                        <div>
+                            <label for="price"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                            <input type="number" value="399" name="price" id="price"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="$299">
+                        </div>
+                        <div>
+                            <label for="category"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                            <select id="category"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <option selected="">Electronics</option>
+                                <option value="TV">TV/Monitors</option>
+                                <option value="PC">PC</option>
+                                <option value="GA">Gaming/Console</option>
+                                <option value="PH">Phones</option>
+                            </select>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="description"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                            <textarea id="description" rows="5"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Write a description..">Standard glass, 3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boost up to 5.0GHz, 16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT with 8GB of GDDR6 memory, 256GB SSD storage, Gigabit Ethernet, Magic Mouse 2, Magic Keyboard - US</textarea>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button type="submit"
+                            class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                            Update product
+                        </button>
+                        <button type="button"
+                            class="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                            <svg class="mr-1 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            Delete
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+
+import { useQuery } from '@vue/apollo-composable'
+import gql from 'graphql-tag'
+
+
+const CHARACTERS_QUERY = gql`
+  query MyQuery {
+  items(brandName: "Estera") {
+    surfaceName
   }
 }
+`
+
+export default {
+  name: 'App',
+  data() {
+    return{
+   menuTop:['Каталог', 'Crystallit', 'Estera', 'Danke','Moller'],
+   menuStatic:['О компании','Статьи и советы','Видеогалерея','Документы','Сотрудничество','Оплата','Доставка','Реквизиты','Контакты'],
+   mainBanner: {
+    'slider1.png':'Знакомимся с брендами. Какой выбрать?',
+    'slider2.png':'Знакомимся с брендами. Какой выбрать?',
+    'slider3.png':'Знакомимся с брендами. Какой выбрать?',
+    'slider4.png':'Знакомимся с брендами. Какой выбрать?',
+    'slider5.png':'Знакомимся с брендами. Какой выбрать?',
+    'slider6.png':'Знакомимся с брендами. Какой выбрать?',
+    
+   }
+    }
+  },
+  setup () {
+    
+    const { result, loading, error } = useQuery(CHARACTERS_QUERY);
+    return {
+      result,
+      loading, 
+      error
+    }
+  },
+  methods:{
+   
+  }
+}
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>
