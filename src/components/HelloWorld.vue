@@ -1,10 +1,10 @@
 <template>
 
-    <h1>{{ msg }}</h1>
+    <h1>{{ msg }} {{ result.items[1] }}</h1>
 
     <header class="grid justify-around gap-8 mt-8">
         <section class="grid grid-cols-[230px_570px_minmax(60px,500px)_150px] gap-[46px]">
-            <div class="logo not-italic font-normal text-[28px] leading-6 grid items-center">podokonniki.top</div>
+            <div class="logo not-italic font-normal text-[28px] leading-6 grid items-center ">{{ nameSite }}</div>
             <div class="topMenu flex gap-[15px]">
 
               
@@ -18,7 +18,7 @@
             <div class="search grid justify-items-end"><button
                     class="searchButton bg-[#F0F0F0] w-[-webkit-max-content] w-[-moz-max-content] w-max px-[25px] py-2.5 border-[none]"><img
                         class="w-5 h-5" src="../assets/img/search.svg"></button></div>
-            <div class="phoneBlock not-italic font-light text-lg leading-6 grid items-center">8 (812) 240-11-26</div>
+            <div class="phoneBlock not-italic font-light text-lg leading-6 grid items-center">{{ mainPhone }}</div>
         </section>
         <div class="headerBottom grid grid-cols-[5fr_1fr] items-center">
             <div class="menuSmallTop flex gap-5">
@@ -101,7 +101,7 @@
     <section class="main_content grid justify-around bg-[white]">
         <div class="name_item_block grid grid-cols-[minmax(500px,774px)_minmax(500px,774px)] items-center mt-10">
 
-            <div class="name_tovar text-3xl leading-[44px] text-left">Подоконник Estera Дуб золотой матовый</div>
+            <div class="name_tovar text-3xl leading-[44px] text-left">{{ result.items[0].title}}</div>
             <div
                 class="price_title_block shadow-[0px_0px_20px_rgba(0,0,0,0.1)] grid grid-cols-[1fr_minmax(200px,294px)] items-center rounded-[10px]">
 
@@ -129,7 +129,7 @@
             <div class="inputs_block">
                 <div class="name_color mb-4">
                     <span class="name text-base leading-6 text-black">Цвет:</span>
-                    <span class="value text-sm  leading-18px text-[#707070] ml-[5px]">Дуб золотой</span>
+                    <span class="value text-sm  leading-18px text-[#707070] ml-[5px]">{{ result.items[0].colorName }}</span>
 
                 </div>
 
@@ -139,77 +139,15 @@
                 <div class="color_block flex gap-x-0.5 flex-wrap ml-[-5px]">
                     <!-- span*10>img[src='../assets/img/small_color$.png']-->
                     <span
+                        v-for="(color, idx) in result.items"
+                        :key="idx"
+
                         class="group w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="https://lepnina.top/upload/uf/2a2/2a282cfbd39aa5e70e8c5f579ed1383f.jpg" alt="">
-                        <p class="group-hover:block bg-[#F5F3F1] hidden absolute text-xs leading-[14px] text-center text-black bottom-[-30px] w-[max-content] z-[1] px-[3px] py-[5px] rounded-lg">Orex Prostoy</p>
+                            :src=color.colorUrl alt="">
+                        <p class="group-hover:block bg-[#F5F3F1] hidden absolute text-xs leading-[14px] text-center text-black bottom-[-30px] w-[max-content] z-[1] px-[3px] py-[5px] rounded-lg">{{ color.colorName }}</p>
                     </span>
-                    <span class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color2.png" alt="">
-                        <p class="hidden absolute text-xs leading-[14px] text-center text-black bottom-[-42px] w-[100] z-[1] px-[3px] py-[5px] rounded-lg">Orex Prostoy</p>
-                    </span>
-                    <span class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color3.png" alt="">
-                        <p class="hidden absolute text-xs leading-[14px] text-center text-black bottom-[-42px] w-[100] z-[1] px-[3px] py-[5px] rounded-lg">Orex Prostoy</p>
-                    </span>
-                    <span class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color4.png" alt="">
-                        <p class="hidden absolute text-xs leading-[14px] text-center text-black bottom-[-42px] w-[100] z-[1] px-[3px] py-[5px] rounded-lg">Orex Prostoy</p>
-                    </span>
-                    <span class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color5.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color6.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color7.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color8.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color9.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color10.png" alt=""></span> 
-                    <span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color1.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color2.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color3.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color4.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color5.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color6.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color7.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color8.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color9.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color10.png" alt=""></span>
-                    <span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color1.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color2.png" alt=""></span><span  
-                        class="hidden absolute text-xs leading-[14px] text-center text-black bottom-[-42px] w-[100] z-[1] px-[3px] py-[5px] rounded-lg"
-                        ><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color3.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color4.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color5.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color6.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color7.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color8.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color9.png" alt=""></span><span
-                        class="w-[52px] h-[52px] relative flex justify-center items-center -mt-2 mb-2.5 rounded-[7px] rounded-md border-2 border-solid border-[white] hover:cursor-pointer hover:border-2 hover:border-solid hover:border-[#CAA381]"><img class="rounded w-[42px] h-[42px]"
-                            src="../assets/img/small_color10.png" alt=""></span>
+
+                    
 
                 </div>
 
@@ -255,7 +193,7 @@
                     </div>
 
                     <div
-                        class="quest_block relative after:content-[''] after:bg-[url(./assets/img/quetion.svg)] after:inline-block after:w-5 after:h-5 after:absolute after:ml-2.5 after:right-[15px] after:bottom-[9px]">
+                        class="quest_block relative after:content-[''] after:bg-[url(./assets/img/quetion.svg)] after:inline-block after:w-5 after:h-5 after:absolute after:ml-2.5 after:right-[15px] after:bottom-[15px]">
                         <span>Длина:</span>
                         <input type="text"
                             class="border rounded text-sm leading-18px text-[black] w-full mt-[5px] px-[15px] py-[9px] border-solid border-[#D2D0CE]"
@@ -866,8 +804,11 @@ import gql from 'graphql-tag'
 
 
 const CHARACTERS_QUERY = gql`
-  query MyQuery {
+ query MyQuery {
   items(brandName: "Estera") {
+    colorUrl
+    colorName
+    title
     surfaceName
   }
 }
@@ -877,6 +818,8 @@ export default {
   name: 'App',
   data() {
     return{
+   mainPhone:'8 (812) 240-11-26',
+   nameSite:'podokonniki.top',
    menuTop:['Каталог', 'Crystallit', 'Estera', 'Danke','Moller'],
    menuStatic:['О компании','Статьи и советы','Видеогалерея','Документы','Сотрудничество','Оплата','Доставка','Реквизиты','Контакты'],
    mainBanner: {
